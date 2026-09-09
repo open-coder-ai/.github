@@ -60,6 +60,14 @@ dark `#ffffff`; `TEXT_SECONDARY` light `#52514e` / dark `#c3c2b7`.
 
 ## Generation
 
+The four repositories configure `ruff format` at three different line lengths (chock and
+agentseam 120, context-report 100, chock-catalog ruff's default 88), so no *formatted* output could
+satisfy all of them — a file formatted at 88 gets joined at 120, one formatted at 120 gets split at
+88. `palette.py` and `make_family.py` are therefore written as a **formatter fixed point**: every
+statement on one line under 88 characters, nothing split across lines, magic trailing commas pinning
+the collection literals. A formatter at any width finds nothing to join or wrap. Keep it that way,
+and never work around it with a per-repo `ruff format` exclude.
+
 Generators are **stdlib-only** plus `palette`. Rendering to PNG for inspection may use `cairosvg`,
 but nothing in CI may depend on it.
 
