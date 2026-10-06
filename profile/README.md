@@ -4,8 +4,6 @@
 
 </div>
 
-# Teach your AI agent what not to do.
-
 Open-source guardrails for AI coding agents: rules the agent reads, checks that run as it writes, and gates at commit and in CI.
 
 [chock](https://github.com/open-coder-ai/chock) · [policy catalog](https://github.com/open-coder-ai/chock-catalog) · [agentseam](https://github.com/open-coder-ai/agentseam) · [context-report](https://github.com/open-coder-ai/context-report) · [threat intel](https://github.com/open-coder-ai/chock-threat-intel) · chock.sh (launching soon)
