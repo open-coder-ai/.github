@@ -43,7 +43,7 @@ Run `chock init .`, then `chock add <id> --ref <catalog commit> --verify-sha <sh
 
 Commit the result. Every clone runs `chock sync --repo .` once, because git never clones hooks. Templates: [chock-quickstart](https://github.com/open-coder-ai/chock-quickstart) and [chock-example](https://github.com/open-coder-ai/chock-example).
 
-**2. In your coding agent, as plugins.** Five plugin repositories, one per client. They are best-effort and fail open: the client's own hook runs the check, and nothing runs in CI. Per-client install lines are in each repository's README: [Claude Code](https://github.com/open-coder-ai/chock-claude-plugins), [Copilot](https://github.com/open-coder-ai/chock-copilot-plugins), [Cursor](https://github.com/open-coder-ai/chock-cursor-plugins), [Codex](https://github.com/open-coder-ai/chock-codex-plugins), [Devin](https://github.com/open-coder-ai/chock-devin-plugins).
+**2. In your coding agent, as a plugin.** One person, no repository changes. The chock.sh builder (https://chock.sh/coding/builder/) builds one merged plugin per client from your selection; install it with `chock install --selection '<code>' --apply`. Best-effort and fails open: the client's own hook runs the check, nothing runs in CI.
 
 **3. One plugin for your agent, from chock.sh (launching soon).** Pick catalog policies, or describe your own in a short interview, for Claude Code, Cursor, Codex, Copilot or Devin. You get a `chock install --selection … --client <agent>` command, or a setup script you download, read and run; chock builds the plugin on your machine and shows any custom code before it installs. Inside the agent you can switch a single policy off with `chock bundle off <id>`; the agent itself cannot switch one off.
 
@@ -79,7 +79,7 @@ Tiers: `commit` is a git hook or CI gate that exits non-zero. `in-agent` is the 
 
 **Which agents does it work with?** Claude Code, Copilot, Cursor, Codex and Devin have plugin repositories. So far only Claude Code has been seen refusing in a live session; the others are built and tested but not yet witnessed in their own client, and are labelled untested until they are. agentseam maps 16 agents and says per agent what each can enforce.
 
-**Repository or plugins?** Use the repository route for teams: it enforces at commit and in CI for every clone and every agent. Plugins add the agent's own hook, best-effort, with no repository changes.
+**Repository or plugins?** Use the repository route for teams: it enforces at commit and in CI for every clone and every agent. The builder's plugin adds the agent's own hook, best-effort, with no repository changes.
 
 **What does it cost?** Free and open source (Apache-2.0).
 
@@ -92,7 +92,6 @@ Tiers: `commit` is a git hook or CI gate that exits non-zero. `in-agent` is the 
 - [`registry.yaml`](https://github.com/open-coder-ai/chock-catalog/blob/main/registry.yaml): every policy, its tier and eval counts.
 - [Policy manifests](https://github.com/open-coder-ai/chock-catalog/tree/main/base) (and [`agentic-security/`](https://github.com/open-coder-ai/chock-catalog/tree/main/agentic-security)): `compliance` mappings per policy.
 - [`docs/coverage.md`](https://github.com/open-coder-ai/chock-catalog/blob/main/docs/coverage.md): OWASP coverage in full.
-- Plugin catalogs: `.claude-plugin/marketplace.json` in [chock-claude-plugins](https://github.com/open-coder-ai/chock-claude-plugins/blob/main/.claude-plugin/marketplace.json), and the matching file in each other plugin repository.
 - chock.sh `/llms.txt` and `/api/index.json`: coming with the site.
 
 ## Part of open-coder-ai
@@ -106,11 +105,7 @@ Tiers: `commit` is a git hook or CI gate that exits non-zero. `in-agent` is the 
 | [chock-threat-intel](https://github.com/open-coder-ai/chock-threat-intel) | A weekly, human-reviewed ledger of agentic-AI threats, each scored against the catalog. Unofficial compilation: verify at the source. |
 | [chock-quickstart](https://github.com/open-coder-ai/chock-quickstart) | Template repository: exactly what `chock init` leaves behind. |
 | [chock-example](https://github.com/open-coder-ai/chock-example) | Template repository: a working adoption with one policy per layer (hook, rule, skill). |
-| [chock-claude-plugins](https://github.com/open-coder-ai/chock-claude-plugins) | Catalog policies as Claude Code plugins. |
-| [chock-copilot-plugins](https://github.com/open-coder-ai/chock-copilot-plugins) | Catalog policies as GitHub Copilot and VS Code plugins. |
-| [chock-cursor-plugins](https://github.com/open-coder-ai/chock-cursor-plugins) | Catalog policies as Cursor plugins. |
-| [chock-codex-plugins](https://github.com/open-coder-ai/chock-codex-plugins) | Catalog policies as Codex plugins. |
-| [chock-devin-plugins](https://github.com/open-coder-ai/chock-devin-plugins) | Catalog policies as Devin plugins; Devin documents plugin hooks as best-effort and fail-open. |
+| [chock-claude-plugins](https://github.com/open-coder-ai/chock-claude-plugins), [chock-copilot-plugins](https://github.com/open-coder-ai/chock-copilot-plugins), [chock-cursor-plugins](https://github.com/open-coder-ai/chock-cursor-plugins), [chock-codex-plugins](https://github.com/open-coder-ai/chock-codex-plugins), [chock-devin-plugins](https://github.com/open-coder-ai/chock-devin-plugins) | Retired: plugins come from the chock.sh builder. |
 | chock.sh | Site and plugin builder, launching soon. |
 
 ## Contributing
