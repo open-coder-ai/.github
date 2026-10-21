@@ -35,7 +35,7 @@ chock is on PyPI, but the release there (0.15.2, 30 Sep 2026) is older than the 
 pip install "chock @ git+https://github.com/open-coder-ai/chock@992711af4cf8d4fd9c4c861f10ef6e53374d75d7"
 ```
 
-### Three ways to adopt it
+### Two ways to adopt it
 
 **1. In your repository (for teams).** The commit gates are enforced at commit and in CI.
 
@@ -43,9 +43,7 @@ Run `chock init .`, then `chock add <id> --ref <catalog commit> --verify-sha <sh
 
 Commit the result. Every clone runs `chock sync --repo .` once, because git never clones hooks. Templates: [chock-quickstart](https://github.com/open-coder-ai/chock-quickstart) and [chock-example](https://github.com/open-coder-ai/chock-example).
 
-**2. In your coding agent, as a plugin.** One person, no repository changes. The chock.sh builder (https://chock.sh/coding/builder/) builds one merged plugin per client from your selection; install it with `chock install --selection '<code>' --apply`. Best-effort and fails open: the client's own hook runs the check, nothing runs in CI.
-
-**3. One plugin for your agent, from chock.sh (launching soon).** Pick catalog policies, or describe your own in a short interview, for Claude Code, Cursor, Codex, Copilot or Devin. You get a `chock install --selection … --client <agent>` command, or a setup script you download, read and run; chock builds the plugin on your machine and shows any custom code before it installs. Inside the agent you can switch a single policy off with `chock bundle off <id>`; the agent itself cannot switch one off.
+**2. In your coding agent, as a plugin, from chock.sh (launching soon).** One person, no repository changes. Pick catalog policies, or describe your own in a short interview, for Claude Code, Cursor, Codex, Copilot or Devin. The chock.sh builder (https://chock.sh/coding/builder/) gives you a `chock install --selection … --client <agent> --apply` command, or a setup script you download, read and run; chock builds one merged plugin on your machine and shows any custom code before it installs. Inside the agent you can switch a single policy off with `chock bundle off <id>`; the agent itself cannot switch one off. Best-effort and fails open: the client's own hook runs the check, nothing runs in CI.
 
 ## How it works
 
@@ -77,7 +75,7 @@ Tiers: `commit` is a git hook or CI gate that exits non-zero. `in-agent` is the 
 
 **Does my code leave my machine?** Chock adds no new place your code goes. Your agent still sends context to its own model provider.
 
-**Which agents does it work with?** Claude Code, Copilot, Cursor, Codex and Devin have plugin repositories. So far only Claude Code has been seen refusing in a live session; the others are built and tested but not yet witnessed in their own client, and are labelled untested until they are. agentseam maps 16 agents and says per agent what each can enforce.
+**Which agents does it work with?** Claude Code, Copilot, Cursor, Codex and Devin are the builder's clients. So far only Claude Code has been seen refusing in a live session; the others are built and tested but not yet witnessed in their own client, and are labelled untested until they are. agentseam maps 16 agents and says per agent what each can enforce.
 
 **Repository or plugins?** Use the repository route for teams: it enforces at commit and in CI for every clone and every agent. The builder's plugin adds the agent's own hook, best-effort, with no repository changes.
 
