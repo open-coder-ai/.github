@@ -45,7 +45,7 @@ Commit the result. Every clone runs `chock sync --repo .` once, because git neve
 
 **2. In your coding agent, as plugins.** Five plugin repositories, one per client. They are best-effort and fail open: the client's own hook runs the check, and nothing runs in CI. Per-client install lines are in each repository's README: [Claude Code](https://github.com/open-coder-ai/chock-claude-plugins), [Copilot](https://github.com/open-coder-ai/chock-copilot-plugins), [Cursor](https://github.com/open-coder-ai/chock-cursor-plugins), [Codex](https://github.com/open-coder-ai/chock-codex-plugins), [Devin](https://github.com/open-coder-ai/chock-devin-plugins).
 
-**3. One plugin for your agent, from chock.sh (launching soon).** Pick catalog policies, or describe your own in a short interview, for Claude Code, Cursor, Codex, Copilot or Devin. You get a `chock install --selection … --client <agent>` command, or a setup script you download, read and run; chock builds the plugin on your machine and shows any custom code before it installs. Inside the agent you can switch a single policy off with `chock bundle off <id>`; the agent itself cannot switch one off.
+**3. One plugin for your agent, from [chock.sh](https://chock.sh).** Pick catalog policies, or describe your own in a short interview, for Claude Code, Cursor, Codex, Copilot or Devin. You get a `chock install --selection … --client <agent>` command, or a setup script you download, read and run; chock builds the plugin on your machine and shows any custom code before it installs. Inside the agent you can switch a single policy off with `chock bundle off <id>`; the agent itself cannot switch one off.
 
 ## How it works
 
