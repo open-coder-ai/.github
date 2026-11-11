@@ -6,7 +6,7 @@
 
 Open-source guardrails for AI coding agents: rules the agent reads, checks that run as it writes, and gates at commit and in CI.
 
-[chock](https://github.com/open-coder-ai/chock) · [policy catalog](https://github.com/open-coder-ai/chock-catalog) · [agentseam](https://github.com/open-coder-ai/agentseam) · [context-report](https://github.com/open-coder-ai/context-report) · [threat intel](https://github.com/open-coder-ai/chock-threat-intel) · chock.sh (launching soon)
+[chock](https://github.com/open-coder-ai/chock) · [policy catalog](https://github.com/open-coder-ai/chock-catalog) · [agentseam](https://github.com/open-coder-ai/agentseam) · [context-report](https://github.com/open-coder-ai/context-report) · [threat intel](https://github.com/open-coder-ai/chock-threat-intel) · [chock.sh](https://chock.sh)
 
 Open Coder AI builds open-source guardrails for AI coding agents. Chock is the engine: each policy is a deterministic local check, with no model and no upload, that refuses a known class of mistake before it is committed. The [catalog](https://github.com/open-coder-ai/chock-catalog) holds the policies, [agentseam](https://github.com/open-coder-ai/agentseam) is the layer that carries them into each agent, and everything is free and open source under Apache-2.0.
 
