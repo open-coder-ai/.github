@@ -111,7 +111,7 @@ Tiers: `commit` is a git hook or CI gate that exits non-zero. `in-agent` is the 
 | [chock-cursor-plugins](https://github.com/open-coder-ai/chock-cursor-plugins) | Catalog policies as Cursor plugins. |
 | [chock-codex-plugins](https://github.com/open-coder-ai/chock-codex-plugins) | Catalog policies as Codex plugins. |
 | [chock-devin-plugins](https://github.com/open-coder-ai/chock-devin-plugins) | Catalog policies as Devin plugins; Devin documents plugin hooks as best-effort and fail-open. |
-| chock.sh | Site and plugin builder, launching soon. |
+| [chock.sh](https://chock.sh) | Site and plugin builder, 1.0. |
 
 ## Contributing
 
